@@ -1,5 +1,6 @@
 package com.shubhamkumarwinner.composepaging.di
 
+import com.shubhamkumarwinner.composepaging.data.paging.RickMortyPagingSource
 import com.shubhamkumarwinner.composepaging.data.remote.RickMortyApi
 import com.shubhamkumarwinner.composepaging.data.repository.RickRepo
 import com.shubhamkumarwinner.composepaging.data.repository.RickRepoImpl
@@ -25,4 +26,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideCoinRepository(api: RickMortyApi):RickRepo = RickRepoImpl(api)
+
+    @Provides
+    @Singleton
+    fun providePagingSource(rickRepo: RickRepo) = RickMortyPagingSource(rickRepo)
 }

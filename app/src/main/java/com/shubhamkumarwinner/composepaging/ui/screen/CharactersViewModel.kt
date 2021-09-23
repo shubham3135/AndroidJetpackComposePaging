@@ -14,9 +14,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
-    private val rickRepo: RickRepo
+    private val rickMortyPagingSource: RickMortyPagingSource
 ) : ViewModel() {
     val characters: Flow<PagingData<Result>> = Pager(PagingConfig(pageSize = MAX_PAGE_SIZE)){
-        RickMortyPagingSource(rickRepo)
+        rickMortyPagingSource
     }.flow
 }
